@@ -27,7 +27,7 @@ class WelcomeController extends Controller
         $this->viewbag->teste = [];
 
         /* Call View */
-        return $this->View("Welcome/Index", "Welcome");
+        return $this->View("Home/Index", "Principal");
     }
 
 }

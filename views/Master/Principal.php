@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- SEO Tags -->
+  <!-- SEO -->
   <title>Simple CRUD</title>
   <meta name="description" content="Simple CRUD">
   <meta name="keywords" content="Simple CRUD, CRUD Sample, CRUD, PHP, MYSQL">
