@@ -105,6 +105,14 @@ var app = (function() {
         $('.rg').mask("99.999.999-A");
         $('.cep').mask("99999-999");
 
+
+        // ------------- //
+        // Custom Validators //
+        // ------------- //
+        jQuery.validator.addMethod("date-br", function(value, element) {
+            return new moment(value, "DD/MM/YYYY").isValid();
+        }, "data inválida!");
+
         // ------------- //
         // Forms Validator //
         // ------------- //

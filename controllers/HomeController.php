@@ -1,32 +1,41 @@
 <?php
 
-/* ------------------------ */
-/* Includes                 */
-/* ------------------------ */
-require "./models/Model.php";
-
 use Core\Controller;
+use Core\Table;
 
 class HomeController extends Controller
 {
-    /* ------------ */
-    /* Constructor */
-    /* ------------ */    
+    /* --------------- */
+    /* Construtor
+    /* --------------- */
     public function __construct()
     {
-        /* Base Constructor */        
+        // chama construtor base
         parent::__construct();  
     }
 
-    /* ------------ */
-    /* Index    */
-    /* ------------ */
+    /* --------------- */
+    /* Rota default, listagem de doadores cadastrados
+    /* --------------- */   
     public function index($params)
     {   
-        /* Set Viewbag Parameters */
-        $this->viewbag->teste = [];
+        $table = new Table("table table-default");
 
-        /* Call View */
+        $table->AddColumn("Nome", "100px");
+        $table->AddColumn("Email", "100%");      
+        
+        $table->AddRow([
+            "Marcelo",
+            "marcelo@estartar.com"
+        ]);
+
+        $table->AddRow([
+            "Joao",
+            "joao@estartar.com"
+        ]);        
+
+        $this->viewbag->table = $table;
+
         return $this->View("Home/Index", "Principal");
     }
 

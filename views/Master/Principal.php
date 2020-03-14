@@ -57,6 +57,8 @@
   <!-- Base JS -->
   <script src="<?= CONFIG["BASEURL"]. "/assets/js/validate.js" ?>"></script>
   <script src="<?= CONFIG["BASEURL"]. "/assets/js/mask.js" ?>"></script>
+  <script src="<?= CONFIG["BASEURL"]. "/assets/js/moment.js" ?>"></script>
+  <script src="<?= CONFIG["BASEURL"]. "/assets/js/moment-pt-br.js" ?>"></script>
   <script src="<?= CONFIG["BASEURL"]. "/assets/js/app.js?version=". rand() ?>"></script>
   
   <!-- Custom JS -->
