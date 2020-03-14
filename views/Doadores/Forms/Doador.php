@@ -38,8 +38,9 @@
         <div class="form-group col-md-4">
             <label for="intervalodoacao">Intervalo doação</label>
             <select name="intervalodoacao" class="custom-select form-control" required="true">
-                <?php foreach($viewbag->situacoes as $situacao): ?>
-                    <option <?php echo !empty($viewbag->model) ? ($viewbag->model->situacao == $situacao) ? "selected" : "" : "" ?> ><?= $situacao ?></option>
+                <option value="">Selecione.</option>
+                <?php foreach($viewbag->intervalosdoacao as $intervalo): ?>
+                    <option <?php echo !empty($viewbag->model) ? ($viewbag->model->intervalodoacao == $intervalo) ? "selected" : "" : "" ?> ><?= $intervalo ?></option>
                 <?php endforeach ?>
             </select>            
         </div>        
@@ -57,8 +58,9 @@
         <div class="form-group col-md-4">
             <label for="formapagamento">Forma de pagamento</label>
             <select name="formapagamento" class="custom-select form-control" required="true">
-                <?php foreach($viewbag->situacoes as $situacao): ?>
-                    <option <?php echo !empty($viewbag->model) ? ($viewbag->model->situacao == $situacao) ? "selected" : "" : "" ?> ><?= $situacao ?></option>
+                <option value="">Selecione.</option>
+                <?php foreach($viewbag->formaspagamento as $formapagamento): ?>
+                    <option <?php echo !empty($viewbag->model) ? ($viewbag->model->formapagamento == $formapagamento) ? "selected" : "" : "" ?> ><?= $formapagamento ?></option>
                 <?php endforeach ?>
             </select>            
         </div>       

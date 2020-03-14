@@ -41,7 +41,7 @@ class DoadoresController extends Controller
             /* 4.1 links de remocao/edicao dos registros */
             $removeUrl = "<a class='post-confirm btn-link text-danger' data-message=\"Confirma exclusão do registro?\" href='" . CONFIG["BASEURL"]. "/doadores/apagar/" . $item->id. "'><i class=\"fas fa-trash\"></i></a>";
             $editUrl = "<a class='post btn-link text-primary' href='" . CONFIG["BASEURL"] . "/doadores/editar/" .$item->id. "'><i class=\"fas fa-edit\"></i></a>";                                        
-            
+
             $table->AddRow([
                 "{$removeUrl} {$editUrl}",
                 "{$doador->nome}",
@@ -64,6 +64,8 @@ class DoadoresController extends Controller
     /* ------------------- */    
     public function cadastrar($params = null)
     {   
+        
+
         return $this->View("Doadores/Cadastrar", "Principal");
     }    
 

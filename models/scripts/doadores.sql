@@ -16,7 +16,9 @@ CREATE TABLE IF NOT EXISTS doadores (
 	formapagamento INT, /* debito, credito, */
     observacoes TEXT,
     
-    PRIMARY KEY (id)
+    PRIMARY KEY (id),
+    FOREIGN KEY (intervalodoacao) REFERENCES intervalos_doacao(id),
+    FOREIGN KEY (formapagamento) REFERENCES formas_pagamento(id)    
 );
 
 
