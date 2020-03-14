@@ -9,8 +9,8 @@
 
   <!-- SEO -->
   <title>Simple CRUD</title>
-  <meta name="description" content="Simple CRUD">
-  <meta name="keywords" content="Simple CRUD, CRUD Sample, CRUD, PHP, MYSQL">
+  <meta name="description" content="Ultra Leve MVC Framework para PHP">
+  <meta name="keywords" content="PHP, Framework, MVC, Ultra Slim">
   <meta name="author" content="@Estartar.com">
 
   <!-- Favicon -->
