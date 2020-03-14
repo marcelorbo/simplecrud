@@ -7,7 +7,6 @@ require "./models/Model.php";
 
 use Core\Controller;
 use Core\Table;
-use Core\Pagination;
 
 use Models\Model;
 
@@ -153,20 +152,7 @@ class TestsController extends Controller
         return $this->View("Tests/TextEditor", "Welcome");
     }    
 
-    /* ------------ */
-    /* Pagination    */
-    /* ------------ */
-    public function pagination($params)
-    {   
-        /* get page */
-        $page = !empty($params[1]) ? $params[1] : 1;
-
-        /* Set Viewbag Parameters */
-        $this->viewbag->pagination = (new Pagination($page, 5, 6, "/tests/pagination"));
-
-        /* Call View */
-        return $this->View("Tests/Pagination", "Welcome");
-    }        
+     
 
 
 }

@@ -8,10 +8,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <!-- SEO Tags -->
-  <title>Alpha . PHP XS Framework</title>
-  <meta name="description" content="A PHP Micro Framework">
-  <meta name="keywords" content="PHP, Microframework, Framework, MVC, ActiveRecord">
-  <meta name="author" content="Estartar.com">
+  <title>Simple CRUD</title>
+  <meta name="description" content="Simple CRUD">
+  <meta name="keywords" content="Simple CRUD, CRUD Sample, CRUD, PHP, MYSQL">
+  <meta name="author" content="@Estartar.com">
 
   <!-- Favicon -->
   <link rel="icon" type="image/png" sizes="32x32" href="<?= CONFIG["BASEURL"]. "/assets/images/favicon-32x32.png" ?>">
@@ -73,7 +73,7 @@
   <script src="<?= CONFIG["BASEURL"]. "/assets/js/overlay.js" ?>"></script>
   <script src="<?= CONFIG["BASEURL"]. "/assets/js/datepicker.js" ?>"></script>
   <script src="<?= CONFIG["BASEURL"]. "/assets/js/datepicker.pt-BR.js" ?>"></script>
-  <script src="<?= CONFIG["BASEURL"]. "/assets/js/Chart.bundle.min.js" ?>"></script>
+  <script src="<?= CONFIG["BASEURL"]. "/assets/js/chart.bundle.min.js" ?>"></script>
   <script src="<?= CONFIG["BASEURL"]. "/assets/js/app.js?version=". rand() ?>"></script>
 
   <!-- Custom JS -->
