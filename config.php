@@ -5,7 +5,7 @@ define(
         "BASEDIR"           => str_replace('\\', '/', dirname(__FILE__)),
         "BASEURL"           => "http://localhost/simplecrud",
         "BASEFOLDER"        => "/simplecrud", 
-        "BASECONTROLLER"    => "Welcome", 
+        "BASECONTROLLER"    => "Home", 
         "BASEMETHOD"        => "Index",
         "BASEPARAMS"        => [],
 
