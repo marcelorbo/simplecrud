@@ -13,8 +13,7 @@ require_once("core/ActiveRecord.php");
 require_once("core/ViewBag.php");
 require_once("core/Controller.php");
 require_once("core/Table.php");
-
-require_once("vendor/autoload.php");
+require_once("core/Util.php");
 
 $app = new App();
 $app->Start();
