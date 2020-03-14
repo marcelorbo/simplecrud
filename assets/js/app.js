@@ -113,6 +113,10 @@ var app = (function() {
             return new moment(value, "DD/MM/YYYY").isValid();
         }, "data inválida!");
 
+        jQuery.validator.addMethod("money-br", function(value, element) {
+            return (value != "");
+        }, "");
+
         // ------------- //
         // Forms Validator //
         // ------------- //
