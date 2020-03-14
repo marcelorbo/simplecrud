@@ -1,0 +1,82 @@
+ /* aplicar form-control style no input search da busca do datatables */
+ .dataTables_wrapper .dataTables_filter input[type="search"] {
+     height: calc(1.5em + .75rem + 2px);
+     padding: .375rem .75rem;
+     font-size: 1rem;
+     font-weight: 400;
+     line-height: 1.5;
+     color: #495057;
+     background-color: #fff;
+     background-clip: padding-box;
+     border: 1px solid #ced4da;
+     border-radius: .25rem;
+     transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+ }
+ 
+ table.dataTable thead th, table.dataTable thead td {
+    padding: 10px 11px;
+     /* padding: 10px 11px;
+     border-bottom: 1px solid #555;
+     color: #555 !important;
+     text-shadow: none; */
+
+     border-top: 0;
+     border-bottom-width: 1px;
+     font-family: "ubuntu-medium", sans-serif;
+     font-weight: initial;
+     font-size: 0.875rem;
+ }
+
+ table.dataTable tbody td {
+     border-top: 0;
+     border-bottom-width: 1px;
+     font-family: "ubuntu-light", sans-serif;
+     font-size: 0.875rem;
+ }
+
+ div.dataTables_wrapper {
+     width: 100%;
+     margin: 0 auto;
+ }
+
+ .table thead th {
+    border-top: 0;
+    border-bottom-width: 1px;
+    font-family: "ubuntu-medium", sans-serif;
+    font-weight: initial;
+}
+.table thead th {
+    vertical-align: bottom;
+    border-bottom: 2px solid #ebedf2;
+}
+.table th, .table td {
+    vertical-align: middle;
+    font-size: 0.875rem;
+    line-height: 1;
+    white-space: nowrap;
+}
+.table th, .table td {
+    padding: 0.9375rem;
+    vertical-align: top;
+    border-top: 1px solid #ebedf2;
+}
+
+.dataTables_info {
+    font-size: 0.875rem;
+}
+
+.dataTables_paginate {
+    font-size: 0.875rem;
+}
+
+.ubuntu-light {
+    font-family: "ubuntu-light", sans-serif;
+}
+
+.table tbody td {
+    font-family: "ubuntu-light", sans-serif;
+    font-size: 0.875rem;
+}
+
+
+ 
