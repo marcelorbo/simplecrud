@@ -92,3 +92,24 @@ function Json($data)
     exit;
 }
 
+function dateBR($param)
+{
+    $retorno = str_replace('/', '-', $param);
+    $retorno = date("d/m/Y", strtotime($retorno));    
+    return $retorno;
+}
+
+function realToFloat($brl)
+{
+    $source = array('.', ',');
+    $replace = array('', '.');
+    $brl = str_replace($source, $replace, $brl); 
+    $brl = (float)$brl;
+    return $brl;
+}
+
+function floatToReal($float)
+{
+    return number_format($float, 2, ',', '.');
+}
+

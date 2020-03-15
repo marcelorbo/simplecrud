@@ -2,7 +2,7 @@
 <section class="container">
     <div class="row my-5">
         <div class="col-lg-9 mx-auto">
-            <a href="<?= CONFIG["BASEURL"]. "/doadores/cadastrar" ?>" class="btn btn-primary post float-right mb-3 font-weight-light"><i class="fa fa-plus"></i> Cadastrar novo doador</a>
+            <a href="<?= CONFIG["BASEURL"]. "/doadores/cadastrar" ?>" class="btn btn-primary post float-right mb-3 font-weight-light"><i class="fa fa-plus"></i> &nbsp;Cadastrar novo doador</a>
         </div>
         <div class="col-lg-9 mx-auto">
             <div class="card border-0 bg-white">

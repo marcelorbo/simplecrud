@@ -105,6 +105,60 @@ var app = (function() {
         $('.rg').mask("99.999.999-A");
         $('.cep').mask("99999-999");
 
+        // ------------- //        
+        // consulta CEP /
+        // ------------- //        
+        $(".cep").blur(function() {
+
+            //Nova variável "cep" somente com dígitos.
+            var cep = $(this).val().replace(/\D/g, '');
+
+            //Verifica se campo cep possui valor informado.
+            if (cep != "") {
+
+                //Expressão regular para validar o CEP.
+                var validacep = /^[0-9]{8}$/;
+
+                //Valida o formato do CEP.
+                if (validacep.test(cep)) {
+                    $(".spinner-container").fadeIn(500);
+
+                    //Preenche os campos com "..." enquanto consulta webservice.
+                    $("input[name=logradouro]").val('');
+                    $("input[name=bairro]").val('');
+                    $("input[name=cidade]").val('');
+                    $("select[name=uf]").val('');
+                    // $("#ibge").val("...");
+
+                    //Consulta o webservice viacep.com.br/
+                    $.getJSON("https://viacep.com.br/ws/" + cep + "/json/?callback=?", function(dados) {
+
+                        if (!("erro" in dados)) {
+                            //Atualiza os campos com os valores da consulta.
+                            $("input[name=logradouro]").val(dados.logradouro);
+                            $("input[name=bairro]").val(dados.bairro);
+                            $("input[name=cidade]").val(dados.localidade);
+                            $("select[name=uf]").val(dados.uf);
+                            // $("#ibge").val(dados.ibge);
+                            $(".spinner-container").fadeOut('fast');
+                        } //end if.
+                        else {
+                            // CEP pesquisado não foi encontrado.
+                            app.message("CEP não encontrado.");
+                            $(".spinner-container").fadeOut('fast');
+                        }
+                    });
+                } //end if.
+                else {
+                    app.message("Formato de CEP inválido.");
+                    $(".spinner-container").fadeOut('fast');
+                }
+            } //end if.
+            else {
+                // cep sem valor, limpa formulário.
+                $(".spinner-container").fadeOut('fast');
+            }
+        });
 
         // ------------- //
         // Custom Validators //
