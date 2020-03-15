@@ -8,6 +8,7 @@ use Core\Controller;
 use Core\Table;
 
 use Models\Doador;
+use Models\DoadorEndereco;
 use Models\IntervaloDoacao;
 use Models\FormaPagamento;
 
@@ -52,7 +53,7 @@ class DoadoresController extends Controller
                 "{$doador->nome}",
                 "{$doador->email}",
                 "{$doador->cpf}",
-                "{$doador->datanascimento}",
+                ageFromDate($doador->datanascimento),
                 "{$doador->observacoes}"
             ]);
         }
@@ -84,11 +85,7 @@ class DoadoresController extends Controller
             $doador = new Doador();
             $doador->fromArray($_POST);
 
-            // 3.1 trata data e valor
-            $doador->datanascimento = (DateTime::createFromFormat('d/m/Y', $_POST["datanascimento"]))->format("Y-m-d");
-            $doador->valordoacao = realToFloat($_POST["valordoacao"]);
-
-            // 3.3 salva
+            // 3.1 salva doador
             $save = $doador->save();
 
             $alert = new stdClass();
@@ -103,11 +100,32 @@ class DoadoresController extends Controller
                 exit;
             }     
             
+            // 3.2 salva endereco
+            $endereco = new DoadorEndereco();
+            $endereco->fromArray($_POST);
+            $endereco->iddoador = $doador->id;
+            
+            if(!empty($_POST["idendereco"])) {
+                $endereco->id = $_POST["idendereco"];
+            }
+
+            $save = $endereco->save();
+
+            if(!$save)
+            {
+                $alert->icon = "fa fa-alert";
+                $alert->body = "Não conseguimos processar sua requisição. {$endereco->error->getMessage()}";
+                $this->viewbag->alert = $alert;                                
+
+                return $this->View("Doadores/Cadastrar", "Principal");
+                exit;
+            }                 
+
             $alert->icon = "fa fa-check";
             $alert->body = "Cadastro salvo!";
 
             $this->viewbag->alert = $alert;                                
-            $this->viewbag->model = $doador;
+            $this->viewbag->model = (new Doador())->find($doador->id);
         }
 
         // X. chama view
@@ -119,6 +137,8 @@ class DoadoresController extends Controller
     /* ------------------- */    
     public function editar($params)
     {   
+        $alert = new stdClass();
+
         // 0. carrega doador
         $doador = (new Doador())->find($params[0]);
         $this->viewbag->model = $doador;
@@ -134,17 +154,12 @@ class DoadoresController extends Controller
         // 3. se por post, recebe dados do doador e persiste
         if($this->isPostBack()) {
 
-            // 3.0 cria instancia da classe Doador e recebe dados do POST
+            // -----------
+            // dados principais
+            // -----------
             $doador = new Doador();
             $doador->fromArray($_POST);
-
-            var_dump($doador);
-            exit;
-
-            // 3.3 salva
             $save = $doador->save();
-
-            $alert = new stdClass();
 
             if(!$save)
             {
@@ -155,12 +170,35 @@ class DoadoresController extends Controller
                 return $this->View("Doadores/Editar", "Principal");
                 exit;
             }     
+
+            // -----------
+            // endereco
+            // -----------            
+            $endereco = new DoadorEndereco();
+            $endereco->fromArray($_POST);
+            $endereco->iddoador = $doador->id;
+
+            if(!empty($_POST["idendereco"])) {
+                $endereco->id = $_POST["idendereco"];
+            }
+
+            $save = $endereco->save();
+
+            if(!$save)
+            {
+                $alert->icon = "fa fa-alert";
+                $alert->body = "Não conseguimos processar sua requisição. {$endereco->error->getMessage()}";
+                $this->viewbag->alert = $alert;                                
+
+                return $this->View("Doadores/Cadastrar", "Principal");
+                exit;
+            }                             
             
             $alert->icon = "fa fa-check";
             $alert->body = "Cadastro salvo!";
 
             $this->viewbag->alert = $alert;                                
-            $this->viewbag->model = $doador;
+            $this->viewbag->model = (new Doador())->find($doador->id);
         }
 
         // X. chama view

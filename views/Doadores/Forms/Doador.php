@@ -2,7 +2,11 @@
     <div class="form-row">
         
         <?php if(!empty($viewbag->model)): ?>
+            <!-- guarda id doador -->
             <input type="hidden" name="id" value="<?= $viewbag->model->id ?? 0 ?>" />
+
+            <!-- endereço -->
+            <?php $address = $viewbag->model->getAddress(); ?>
         <?php endif ?>              
 
         <div class="form-group col-md-12">
@@ -89,34 +93,39 @@
         <!---------------------->
         <!-- endereço -->
         <!---------------------->
+        <?php if(!empty($address)): ?>
+            <!-- guarda id doador -->
+            <input type="hidden" name="idendereco" value="<?= $address->id ?? 0 ?>" />
+        <?php endif ?>              
+
         <div class="form-group col-md-3">
             <label for="cep">CEP</label>
-            <input type="text" class="form-control cep" name="cep" required="true" value="<?= $model->cep ?? "" ?>" />
+            <input type="text" class="form-control cep" name="cep" required="true" value="<?= $address->cep ?? "" ?>" />
         </div>
 
         <div class="form-group col-md-9">
             <label for="logradouro">Endereço</label>
-            <input type="text" class="form-control" name="logradouro" value="<?= $model->logradouro ?? "" ?>" />
+            <input type="text" class="form-control" name="logradouro" value="<?= $address->logradouro ?? "" ?>" />
         </div>
 
         <div class="form-group col-md-3">
             <label for="numero">Número</label>
-            <input type="text" class="form-control" name="numero" value="<?= $model->numero ?? "" ?>" />
+            <input type="text" class="form-control" name="numero" value="<?= $address->numero ?? "" ?>" />
         </div>        
 
         <div class="form-group col-md-3">
             <label for="complemento">Complemento</label>
-            <input type="text" class="form-control" name="complemento" value="<?= $model->complemento ?? "" ?>" />
+            <input type="text" class="form-control" name="complemento" value="<?= $address->complemento ?? "" ?>" />
         </div>                
 
         <div class="form-group col-md-6">
             <label for="bairro">Bairro</label>
-            <input type="text" class="form-control" name="bairro" value="<?= $model->bairro ?? "" ?>" />
+            <input type="text" class="form-control" name="bairro" value="<?= $address->bairro ?? "" ?>" />
         </div>                        
 
         <div class="form-group col-md-9">
             <label for="cidade">Cidade</label>
-            <input type="text" class="form-control" name="cidade" required="true" value="<?= $model->cidade ?? "" ?>" />
+            <input type="text" class="form-control" name="cidade" required="true" value="<?= $address->cidade ?? "" ?>" />
         </div>                                
 
         <div class="form-group col-md-3 mb-5">

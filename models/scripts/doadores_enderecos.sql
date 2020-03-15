@@ -1,6 +1,6 @@
 /* doadores_enderecos */
 DROP TABLE IF EXISTS doadores_enderecos;
-CREATE TABLE IF NOT EXISTS correspondentes_enderecos (
+CREATE TABLE IF NOT EXISTS doadores_enderecos (
     id INT AUTO_INCREMENT,
 	created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP(),
     updated_at DATETIME NOT NULL ON UPDATE CURRENT_TIMESTAMP(),

@@ -28,6 +28,7 @@
 
             $("select[name=intervalodoacao]").val("<?= !empty($viewbag->model) ? $viewbag->model->intervalodoacao : "" ?>");
             $("select[name=formapagamento]").val("<?= !empty($viewbag->model) ? $viewbag->model->formapagamento : "" ?>");                        
+            $("select[name=uf]").val("<?= !empty($address) ? $address->uf : "" ?>");
 
         }
         return {

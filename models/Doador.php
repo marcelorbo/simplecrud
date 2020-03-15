@@ -17,7 +17,7 @@ class Doador extends ActiveRecord
     public function fromArray(array $array) {
         
         // 0. trata campos excedentes do endereco
-        foreach(["cep", "logradouro", "numero", "complemento", "bairro", "cidade", "uf"] as $field) {
+        foreach(["idendereco", "cep", "logradouro", "numero", "complemento", "bairro", "cidade", "uf"] as $field) {
             unset($array[$field]);
         }
 
@@ -32,7 +32,7 @@ class Doador extends ActiveRecord
     /* ---------------------- */
     /* Retorna endereco do doador
     /* ---------------------- */        
-    public function endereco() {
+    public function getAddress() {
         return (new DoadorEndereco())->where(["iddoador = {$this->id}"])->first();
     }
 }

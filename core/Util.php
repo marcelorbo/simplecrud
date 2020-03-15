@@ -113,3 +113,10 @@ function floatToReal($float)
     return number_format($float, 2, ',', '.');
 }
 
+function ageFromDate($date) 
+{
+    $today = date("Y-m-d");
+    $diff = date_diff(date_create($date), date_create($today));
+    return $diff->format('%y');
+}
+
