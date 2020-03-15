@@ -2,8 +2,8 @@ Options +FollowSymLinks
 Options -Indexes
 RewriteEngine On
 
-# RewriteCond %{SERVER_PORT} 80
-# RewriteRule ^(.*)$ https://app.agriplace.agr.br/$1 [R,L]
+#RewriteCond %{SERVER_PORT} 80
+#RewriteRule ^(.*)$ https://estartar.com/simplecrud/$1 [R,L]
 
 RewriteCond %{SCRIPT_FILENAME} !-d
 RewriteCond %{SCRIPT_FILENAME} !-f
