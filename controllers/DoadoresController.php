@@ -14,17 +14,23 @@ use Models\FormaPagamento;
 
 class DoadoresController extends Controller
 {
-    /* --------------- */
-    /* construtor
-    /* --------------- */       
     public function __construct()
     {
-        // chama construtor da classe base
         parent::__construct();  
+
+        $alert = new stdClass();
+
+        // 1. carrega intervalos de doacao cadastrados && formas pagamento ativas 
+        $intervalosdoacao = (new IntervaloDoacao())->where(["situacao = 1"])->find();
+        $formaspagamento = (new FormaPagamento())->where(["situacao = 1"])->find();
+
+        // 2. passa valores para serem transportados pra view
+        $this->viewbag->intervalosdoacao = $intervalosdoacao;
+        $this->viewbag->formaspagamento = $formaspagamento;
     }
 
     /* ------------------- */
-    /* Listar todos
+    /* Listar doadores
     /* ------------------- */    
     public function listar()
     {   
@@ -65,30 +71,17 @@ class DoadoresController extends Controller
         return $this->View("Doadores/Listar", "Principal");
     }
 
-    /* ------------------- */
-    /* Cadastrar novo
-    /* ------------------- */    
+
+    /* --------------- */
+    /* Cadastrar novo doador
+    /* --------------- */
     public function cadastrar()
     {   
-        // 1. carrega intervalos de doacao cadastrados && formas pagamento 
-        $intervalosdoacao = (new IntervaloDoacao())->where(["situacao = 1"])->find();
-        $formaspagamento = (new FormaPagamento())->where(["situacao = 1"])->find();
-
-        // 2. passa valores para serem transportados pra view
-        $this->viewbag->intervalosdoacao = $intervalosdoacao;
-        $this->viewbag->formaspagamento = $formaspagamento;
-
-        // 3. se por post, recebe dados do doador e persiste
         if($this->isPostBack()) {
 
-            // 3.0 cria instancia da classe Doador e recebe dados do POST
             $doador = new Doador();
             $doador->fromArray($_POST);
-
-            // 3.1 salva doador
             $save = $doador->save();
-
-            $alert = new stdClass();
 
             if(!$save)
             {
@@ -100,11 +93,10 @@ class DoadoresController extends Controller
                 exit;
             }     
             
-            // 3.2 salva endereco
             $endereco = new DoadorEndereco();
             $endereco->fromArray($_POST);
             $endereco->iddoador = $doador->id;
-            
+
             if(!empty($_POST["idendereco"])) {
                 $endereco->id = $_POST["idendereco"];
             }
@@ -128,35 +120,21 @@ class DoadoresController extends Controller
             $this->viewbag->model = (new Doador())->find($doador->id);
         }
 
-        // X. chama view
+        // chama view
         return $this->View("Doadores/Cadastrar", "Principal");
     }    
 
-    /* ------------------- */
+
+    /* --------------- */
     /* Alterar doador
-    /* ------------------- */    
+    /* --------------- */
     public function editar($params)
     {   
-        $alert = new stdClass();
-
-        // 0. carrega doador
         $doador = (new Doador())->find($params[0]);
         $this->viewbag->model = $doador;
 
-        // 1. carrega intervalos de doacao cadastrados && formas pagamento 
-        $intervalosdoacao = (new IntervaloDoacao())->where(["situacao = 1"])->find();
-        $formaspagamento = (new FormaPagamento())->where(["situacao = 1"])->find();
-
-        // 2. passa valores para serem transportados pra view
-        $this->viewbag->intervalosdoacao = $intervalosdoacao;
-        $this->viewbag->formaspagamento = $formaspagamento;
-
-        // 3. se por post, recebe dados do doador e persiste
         if($this->isPostBack()) {
 
-            // -----------
-            // dados principais
-            // -----------
             $doador = new Doador();
             $doador->fromArray($_POST);
             $save = $doador->save();
@@ -171,9 +149,6 @@ class DoadoresController extends Controller
                 exit;
             }     
 
-            // -----------
-            // endereco
-            // -----------            
             $endereco = new DoadorEndereco();
             $endereco->fromArray($_POST);
             $endereco->iddoador = $doador->id;
@@ -205,9 +180,9 @@ class DoadoresController extends Controller
         return $this->View("Doadores/Editar", "Principal");
     }    
 
-    /* -------------- */
-    /* Apagar */
-    /* -------------- */    
+    /* --------------- */
+    /* Apagar doador
+    /* --------------- */
     public function apagar($params)
     {
         $doador = (new Doador())->find($params[0]);
