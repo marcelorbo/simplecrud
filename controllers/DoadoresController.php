@@ -138,11 +138,8 @@ class DoadoresController extends Controller
             $doador = new Doador();
             $doador->fromArray($_POST);
 
-            // 3.1 trata data e valor
-            $doador->datanascimento = (DateTime::createFromFormat('d/m/Y', $_POST["datanascimento"]))->format("Y-m-d");
-            $doador->valordoacao = realToFloat($_POST["valordoacao"]);
-
-
+            var_dump($doador);
+            exit;
 
             // 3.3 salva
             $save = $doador->save();
