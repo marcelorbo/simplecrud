@@ -247,7 +247,7 @@ var app = (function() {
                 [5, 10],
                 [5, 10]
             ],
-            "searching": false,
+            "searching": true,
             "order": [
                 [1, "desc"]
             ],
