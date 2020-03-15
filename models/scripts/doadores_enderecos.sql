@@ -15,6 +15,5 @@ CREATE TABLE IF NOT EXISTS doadores_enderecos (
     iddoador INT, 
     
     PRIMARY KEY (id),
-    FOREIGN KEY (iddoador) REFERENCES doadores(id)
-		ON DELETE CASCADE
+    FOREIGN KEY FK_id_doador (iddoador) REFERENCES doadores(id) ON DELETE CASCADE ON UPDATE CASCADE
 );

@@ -21,5 +21,7 @@ CREATE TABLE IF NOT EXISTS doadores (
     FOREIGN KEY (formapagamento) REFERENCES formas_pagamento(id)    
 );
 
+SELECT * FROM doadores;
+SELECT * FROM doadores_enderecos;
 
-
+TRUNCATE TABLE doadores_enderecos;
