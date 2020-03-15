@@ -1,6 +1,6 @@
 # Simple CRUD
 
-Framework MVC Ultra Leve para PHP
+CRUD Básico utilizando framework MVC próprio, ultra leve, em PHP.
 
 ## Getting Started
 
